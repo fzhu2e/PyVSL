@@ -2,7 +2,7 @@
 VS-Lite in Python.
 
 It contains two modes:
-1. A python wrapper of the original R package of VS-Lite by Suz Tolwinski-Ward by Suz Tolwinski-Ward (https://github.com/suztolwinskiward/VSLiteR)
+1. A python wrapper of the original R package of VS-Lite by Suz Tolwinski-Ward (https://github.com/suztolwinskiward/VSLiteR)
 2. VS-Lite in pure Python (TODO)
 
 ## How to install

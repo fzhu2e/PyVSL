@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-__version__ = '0.0.1'
+__version__ = '0.0.2'
 
 with open('README.md', 'r') as fh:
     long_description = fh.read()
@@ -22,5 +22,6 @@ setup(
         'Programming Language :: Python :: 3.9',
     ],
     install_requires=[
+        'rpy2',
     ],
 )
