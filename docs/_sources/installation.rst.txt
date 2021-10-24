@@ -59,7 +59,7 @@ Taking a clean install as example, first let's create a new environment named :c
     conda create -n PyVSL python=3.9
     conda activate PyVSL
 
-For the wrapper mode, we need to install the original R package of VS-Lite, which can be done by executing the below lines in the R console:
+For the wrapper mode, we need to install `the R programming language <https://www.r-project.org>`_, and the original R package of VS-Lite, which can be done by executing the below lines in the R console:
 
 .. code-block:: R
 
@@ -67,30 +67,34 @@ For the wrapper mode, we need to install the original R package of VS-Lite, whic
     library(devtools)
     install_github("fzhu2e/VSLiteR")
 
-After that, we need to install the :code:`rpy2` python package:
+After that, we also need to install `Octave <https://www.gnu.org/software/octave/index>`_, which is an open-source alternative to Matlab:
 
 .. code-block:: bash
 
-    pip install rpy2
+    brew install octave  # in macOS
 
-Then we are ready to install :code:`PyVSL`:
+Then, we need to install the :code:`rpy2` and :code:`oct2py` python packages:
+
+.. code-block:: bash
+
+    pip install rpy2 oct2py
+
+Now we are ready to install :code:`PyVSL` from PyPi:
 
 .. code-block:: bash
 
     pip install PyVSL
 
-to install from PyPi, or
+or to install from the local path by executing
 
 .. code-block:: bash
 
     pip install -e .
 
-in the directory of the downloaded repo to install from the local path.
+in the directory of the downloaded repo.
 
-Then you are ready to
+Then we are ready to import the package in Python:
 
 .. code-block:: python
 
     import PyVSL
-
-in python.

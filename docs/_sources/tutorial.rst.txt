@@ -7,4 +7,5 @@ Quickstart
 .. toctree::
     :maxdepth: 1
 
-    tutorial/quickstart
+    tutorial/quickstart-wrapper
+    tutorial/quickstart-params-estimator
