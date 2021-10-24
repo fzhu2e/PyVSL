@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-__version__ = '0.0.2'
+__version__ = '0.0.3'
 
 with open('README.rst', 'r') as fh:
     long_description = fh.read()
@@ -23,5 +23,6 @@ setup(
     ],
     install_requires=[
         'rpy2',
+        'oct2py',
     ],
 )

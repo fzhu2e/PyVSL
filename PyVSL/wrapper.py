@@ -1,8 +1,12 @@
+import os
+import numpy as np
 # rpy2
 from rpy2.robjects.packages import importr
 import rpy2.robjects.numpy2ri
 import rpy2.robjects as ro
 rpy2.robjects.numpy2ri.activate()
+
+from oct2py import octave
 
 
 def VSL_R(syear, eyear, phi, T, P, T1=8, T2=23, M1=0.01, M2=0.05, Mmax=0.76, Mmin=0.01,
@@ -22,8 +26,8 @@ def VSL_R(syear, eyear, phi, T, P, T1=8, T2=23, M1=0.01, M2=0.05, Mmax=0.76, Mmi
         syear (int): Start year of simulation.
         eyear (int): End year of simulation.
         phi (float): Latitude of site (in degrees N).
-        T (array): temperature timeseries in K, with length of 12*Nyrs
-        P (array): precipitation timeseries in kg/m2/s, with length of 12*Nyrs
+        T (array): temperature timeseries in deg C, with length of 12*Nyrs
+        P (array): precipitation timeseries in mm/month, with length of 12*Nyrs
         # original param. in R package: T (12 x Nyrs) Matrix of ordered mean monthly temperatures (in degEes C).
         # original param. in R package: P (12 x Nyrs) Matrix of ordered accumulated monthly precipitation (in mm).
         T1: Lower temperature threshold for growth to begin (scalar, deg. C).
@@ -64,8 +68,8 @@ def VSL_R(syear, eyear, phi, T, P, T1=8, T2=23, M1=0.01, M2=0.05, Mmax=0.76, Mmi
     ro.r('.libPaths("{}")'.format(Rlib_path))
     VSLiteR = importr('VSLiteR')
     nyr = eyear - syear + 1
-    T_model = T.reshape((nyr, 12)).T - 273.15  # in monthly temperatures (degC)
-    P_model = P.reshape((nyr, 12)).T * 3600*24*30  # in accumulated monthly precipitation (mm)
+    T_model = T.reshape((nyr, 12)).T
+    P_model = P.reshape((nyr, 12)).T
 
     res = VSLiteR.VSLite(syear, eyear, phi, T_model, P_model, T1=T1, T2=T2, M1=M1, M2=M2, Mmax=Mmax, Mmin=Mmin,
                          alph=alph, m_th=m_th, mu_th=mu_th, rootd=rootd, M0=M0, substep=substep,
@@ -74,3 +78,52 @@ def VSL_R(syear, eyear, phi, T, P, T1=8, T2=23, M1=0.01, M2=0.05, Mmax=0.76, Mmi
     res = dict(zip(res.names, map(list, list(res))))
 
     return res
+
+
+def est_params(
+    T, P, lat, TRW, nyr=None,
+    nsamp=1000, errormod=0, gparpriors='fourbet',
+    pt_ests='med', seed=0,
+    beta_params=np.matrix([
+        [9, 5, 0, 9],
+        [3.5, 3.5, 10, 24],
+        [1.5, 2.8, 0, 0.1],
+        [1.5, 2.5, 0.1, 0.5],
+    ])):
+    ''' Run the VSL parameter estimatino Matlab precedure
+    Args:
+        T (1-D array): monthly surface air temperature [degC]
+        P (1-D array): monthly accumulated precipitation [mm]
+        lat (float): latitude of the site
+        pt_ests (str): 'med' or 'mle'
+        nsamp (int): the number of MCMC iterations
+        errmod (int): 0: white noise, 1: AR(1) noise
+        gparpriors (str): 'fourbet': beta distribution, 'uniform': uniform distribution
+        beta_params (matrix): the beta distribution parameters for T1, T2, M1, M2
+        seed (int): random seed
+    '''
+    dirpath = os.path.dirname(__file__)
+    octave.addpath(dirpath)
+
+    if nyr is None:
+        nyr = np.size(T) // 12
+
+    T_model = T.reshape((nyr, 12)).T
+    P_model = P.reshape((nyr, 12)).T
+
+    T1, T2, M1, M2 = octave.feval(
+        'estimate_vslite_params_v2_3',
+        T_model, P_model, lat, TRW,
+        'seed', seed, 'nsamp', nsamp, 'errormod', errormod,
+        'gparpriors', gparpriors, 'fourbetparams', beta_params,
+        'pt_ests', pt_ests, nargout=4, nout=4,
+    )
+
+    res_dict = {
+        'T1': T1,
+        'T2': T2,
+        'M1': M1,
+        'M2': M2,
+    }
+
+    return res_dict
