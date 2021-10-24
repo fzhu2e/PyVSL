@@ -19,18 +19,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 16,
+   "execution_count": 1,
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "The autoreload extension is already loaded. To reload it, use:\n",
-      "  %reload_ext autoreload\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "%load_ext autoreload\n",
     "%autoreload 2\n",
@@ -49,7 +40,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 33,
+   "execution_count": 2,
    "metadata": {
     "tags": []
    },
@@ -95,8 +86,8 @@
        "    syear (int): Start year of simulation.\n",
        "    eyear (int): End year of simulation.\n",
        "    phi (float): Latitude of site (in degrees N).\n",
-       "    T (array): temperature timeseries in K, with length of 12*Nyrs\n",
-       "    P (array): precipitation timeseries in kg/m2/s, with length of 12*Nyrs\n",
+       "    T (array): temperature timeseries in deg C, with length of 12*Nyrs\n",
+       "    P (array): precipitation timeseries in mm/month, with length of 12*Nyrs\n",
        "    # original param. in R package: T (12 x Nyrs) Matrix of ordered mean monthly temperatures (in degEes C).\n",
        "    # original param. in R package: P (12 x Nyrs) Matrix of ordered accumulated monthly precipitation (in mm).\n",
        "    T1: Lower temperature threshold for growth to begin (scalar, deg. C).\n",
@@ -161,7 +152,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 24,
+   "execution_count": 3,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -173,7 +164,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 25,
+   "execution_count": 4,
    "metadata": {},
    "outputs": [
     {
@@ -209,15 +200,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 30,
+   "execution_count": 5,
    "metadata": {},
    "outputs": [
     {
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "CPU times: user 181 ms, sys: 18.5 ms, total: 200 ms\n",
-      "Wall time: 200 ms\n"
+      "CPU times: user 175 ms, sys: 45.4 ms, total: 220 ms\n",
+      "Wall time: 266 ms\n"
      ]
     }
    ],
@@ -233,7 +224,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 34,
+   "execution_count": 6,
    "metadata": {},
    "outputs": [
     {
@@ -250,7 +241,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 36,
+   "execution_count": 7,
    "metadata": {},
    "outputs": [
     {

@@ -356,8 +356,8 @@ div.rendered_html tbody tr:hover {
 <h1>Quickstart: the wrapper for VS-Lite in R<a class="headerlink" href="#Quickstart:-the-wrapper-for-VS-Lite-in-R" title="Permalink to this headline"></a></h1>
 <p><strong>Expected time to run through: 5 mins</strong></p>
 <p>In this tutorial, we demonstrate how to run the R package of VS-Lite with PyVSL.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -370,18 +370,9 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-The autoreload extension is already loaded. To reload it, use:
-  %reload_ext autoreload
-</pre></div></div>
-</div>
 <p>In the below, we check the wrapper function first, and let’s pay attention the units for the input T and P.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -432,8 +423,8 @@ Args:
     syear (int): Start year of simulation.
     eyear (int): End year of simulation.
     phi (float): Latitude of site (in degrees N).
-    T (array): temperature timeseries in K, with length of 12*Nyrs
-    P (array): precipitation timeseries in kg/m2/s, with length of 12*Nyrs
+    T (array): temperature timeseries in deg C, with length of 12*Nyrs
+    P (array): precipitation timeseries in mm/month, with length of 12*Nyrs
     # original param. in R package: T (12 x Nyrs) Matrix of ordered mean monthly temperatures (in degEes C).
     # original param. in R package: P (12 x Nyrs) Matrix of ordered accumulated monthly precipitation (in mm).
     T1: Lower temperature threshold for growth to begin (scalar, deg. C).
@@ -476,7 +467,7 @@ Reference:
 <h2>Load test data<a class="headerlink" href="#Load-test-data" title="Permalink to this headline"></a></h2>
 <p>First of all, we load the test data (can be downloaded with this <a class="reference external" href="https://github.com/fzhu2e/PyVSL/raw/main/docsrc/tutorial/data/test_T_P.pkl">link</a>), which contains T and P at a grid point of the CCSM4 past1000 simulation. Note that the unit for T is degree C and that for P is accumulated monthly precipitation (mm/month).</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -488,7 +479,7 @@ Reference:
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -514,7 +505,7 @@ Reference:
 <h2>Run the wrapper<a class="headerlink" href="#Run-the-wrapper" title="Permalink to this headline"></a></h2>
 <p>Now we are ready to run the wrapper to generate simulated TRW.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -533,12 +524,12 @@ Reference:
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 181 ms, sys: 18.5 ms, total: 200 ms
-Wall time: 200 ms
+CPU times: user 175 ms, sys: 45.4 ms, total: 220 ms
+Wall time: 266 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -555,7 +546,7 @@ dict_keys([&#39;trw&#39;, &#39;gT&#39;, &#39;gM&#39;, &#39;gE&#39;, &#39;M&#39;,
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
