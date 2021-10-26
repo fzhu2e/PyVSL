@@ -4,7 +4,7 @@ PyVSL
 
 VS-Lite in Python. It contains two modes:
 
-1. The wrapper mode. PyVSL implements a python wrapper for `the R package of VS-Lite <https://github.com/suztolwinskiward/VSLiteR>`_ and another for `the Bayesian estimator for the parameters in Matlab <https://github.com/suztolwinskiward/VSLite/blob/master/estimate_vslite_params_v2_3.m>`_
+1. The wrapper mode. PyVSL implements a python wrapper for `VS-Lite in R <https://github.com/suztolwinskiward/VSLiteR>`_ and another for `VS-Lite in Matlab <https://github.com/suztolwinskiward/VSLite/blob/master/VSLite_v2_3.m>`_ , along with a wrapper for `the Bayesian estimator for the parameters (in Matlab) <https://github.com/suztolwinskiward/VSLite/blob/master/estimate_vslite_params_v2_3.m>`_
 2. VS-Lite in pure Python (TODO; welcome to contribute).
 
 Documentation

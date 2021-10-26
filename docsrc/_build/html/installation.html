@@ -153,7 +153,7 @@ which conda  <span class="c1"># should return a path under &lt;base-path&gt;</sp
 conda activate PyVSL
 </pre></div>
 </div>
-<p>For the wrapper mode, we need to install <a class="reference external" href="https://www.r-project.org">the R programming language</a>, and the original R package of VS-Lite, which can be done by executing the below lines in the R console:</p>
+<p>For the wrapper mode for the R code, which is <strong>optional</strong>, we need to install <a class="reference external" href="https://www.r-project.org">the R programming language</a>, and the original R package of VS-Lite, which can be done by executing the below lines in the R console:</p>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;devtools&quot;</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">devtools</span><span class="p">)</span>
 <span class="nf">install_github</span><span class="p">(</span><span class="s">&quot;fzhu2e/VSLiteR&quot;</span><span class="p">)</span>
@@ -163,8 +163,9 @@ conda activate PyVSL
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew install octave  <span class="c1"># in macOS</span>
 </pre></div>
 </div>
-<p>Then, we need to install the <code class="code docutils literal notranslate"><span class="pre">rpy2</span></code> and <code class="code docutils literal notranslate"><span class="pre">oct2py</span></code> python packages:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install rpy2 oct2py
+<p>Then, we need to install the <code class="code docutils literal notranslate"><span class="pre">rpy2</span></code> (<strong>optional</strong>) and <code class="code docutils literal notranslate"><span class="pre">oct2py</span></code> python packages:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install rpy2 <span class="c1"># this is optional if you don&#39;t use the R wrapper</span>
+pip install oct2py
 </pre></div>
 </div>
 <p>Now we are ready to install <code class="code docutils literal notranslate"><span class="pre">PyVSL</span></code> from PyPi:</p>

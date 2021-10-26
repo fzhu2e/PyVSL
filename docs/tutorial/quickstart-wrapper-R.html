@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quickstart: the wrapper for the parameters estimator in Matlab &mdash; PyVSL  documentation</title>
+  <title>Quickstart: the wrapper for VS-Lite in R &mdash; PyVSL  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -21,7 +21,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Quickstart: the wrapper for VS-Lite in Matlab" href="quickstart-wrapper-Matlab.html" /> 
+    <link rel="next" title="Quickstart: the wrapper for VS-Lite in Matlab" href="quickstart-wrapper-Matlab.html" />
+    <link rel="prev" title="Tutorial" href="../tutorial.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,13 +45,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../tutorial.html">Tutorial</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../tutorial.html#quickstart">Quickstart</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="quickstart-wrapper-R.html">Quickstart: the wrapper for VS-Lite in R</a></li>
-<li class="toctree-l3"><a class="reference internal" href="quickstart-wrapper-Matlab.html">Quickstart: the wrapper for VS-Lite in Matlab</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Quickstart: the wrapper for the parameters estimator in Matlab</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Quickstart: the wrapper for VS-Lite in R</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#Load-test-data">Load test data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#Run-the-wrapper">Run the wrapper</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart-wrapper-Matlab.html">Quickstart: the wrapper for VS-Lite in Matlab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart-params-estimator.html">Quickstart: the wrapper for the parameters estimator in Matlab</a></li>
 </ul>
 </li>
 </ul>
@@ -72,9 +73,9 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../tutorial.html">Tutorial</a> &raquo;</li>
-      <li>Quickstart: the wrapper for the parameters estimator in Matlab</li>
+      <li>Quickstart: the wrapper for VS-Lite in R</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/tutorial/quickstart-params-estimator.ipynb.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/tutorial/quickstart-wrapper-R.ipynb.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -352,10 +353,10 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<section id="Quickstart:-the-wrapper-for-the-parameters-estimator-in-Matlab">
-<h1>Quickstart: the wrapper for the parameters estimator in Matlab<a class="headerlink" href="#Quickstart:-the-wrapper-for-the-parameters-estimator-in-Matlab" title="Permalink to this headline"></a></h1>
+<section id="Quickstart:-the-wrapper-for-VS-Lite-in-R">
+<h1>Quickstart: the wrapper for VS-Lite in R<a class="headerlink" href="#Quickstart:-the-wrapper-for-VS-Lite-in-R" title="Permalink to this headline"></a></h1>
 <p><strong>Expected time to run through: 5 mins</strong></p>
-<p>In this tutorial, we demonstrate how to run the Matlab code of the Bayesian estimator (see <a class="reference external" href="https://doi.org/10.5194/cp-9-1481-2013">Tolwinski-Ward et al., 2013</a>) for VS-Lite with PyVSL.</p>
+<p>In this tutorial, we demonstrate how to run the R package of VS-Lite with PyVSL.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -370,11 +371,104 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+<p>In the below, we check the wrapper function first, and let’s pay attention the units for the input T and P.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>PyVSL.VSL_R<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">Signature:</span>
+PyVSL<span class="ansi-blue-fg">.</span>VSL_R<span class="ansi-blue-fg">(</span>
+    syear<span class="ansi-blue-fg">,</span>
+    eyear<span class="ansi-blue-fg">,</span>
+    phi<span class="ansi-blue-fg">,</span>
+    T<span class="ansi-blue-fg">,</span>
+    P<span class="ansi-blue-fg">,</span>
+    T1<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">8</span><span class="ansi-blue-fg">,</span>
+    T2<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">23</span><span class="ansi-blue-fg">,</span>
+    M1<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">0.01</span><span class="ansi-blue-fg">,</span>
+    M2<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">0.05</span><span class="ansi-blue-fg">,</span>
+    Mmax<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">0.76</span><span class="ansi-blue-fg">,</span>
+    Mmin<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">0.01</span><span class="ansi-blue-fg">,</span>
+    alph<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">0.093</span><span class="ansi-blue-fg">,</span>
+    m_th<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">4.886</span><span class="ansi-blue-fg">,</span>
+    mu_th<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">5.8</span><span class="ansi-blue-fg">,</span>
+    rootd<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">1000</span><span class="ansi-blue-fg">,</span>
+    M0<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">0.2</span><span class="ansi-blue-fg">,</span>
+    substep<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">,</span>
+    I_0<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">,</span>
+    I_f<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">12</span><span class="ansi-blue-fg">,</span>
+    hydroclim<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;P&#39;</span><span class="ansi-blue-fg">,</span>
+    Rlib_path<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span>
+<span class="ansi-blue-fg">)</span>
+<span class="ansi-red-fg">Docstring:</span>
+VS-Lite tree-ring PSM
+
+Porting the VSLiteR code (https://github.com/fzhu2e/VSLiteR),
+which is a fork of the original version by Suz Tolwinski-Ward (https://github.com/suztolwinskiward/VSLiteR)
+NOTE: Need to install the R library following the below steps:
+    1. install.packages(&#34;devtools&#34;)
+    2. library(devtools)
+    3. install_github(&#34;fzhu2e/VSLiteR&#34;)
+
+Args:
+    syear (int): Start year of simulation.
+    eyear (int): End year of simulation.
+    phi (float): Latitude of site (in degrees N).
+    T (array): temperature timeseries in deg C, with length of 12*Nyrs
+    P (array): precipitation timeseries in mm/month, with length of 12*Nyrs
+    # original param. in R package: T (12 x Nyrs) Matrix of ordered mean monthly temperatures (in degEes C).
+    # original param. in R package: P (12 x Nyrs) Matrix of ordered accumulated monthly precipitation (in mm).
+    T1: Lower temperature threshold for growth to begin (scalar, deg. C).
+    T2: Upper temperature threshold for growth sensitivity to temp (scalar, deg. C).
+    M1: Lower moisture threshold for growth to begin (scalar, v.v).
+    M2: Upper moisture threshold for growth sensitivity to moisture (scalar, v/v).
+    Mmax: Scalar maximum soil moisture held by the soil (in v/v).
+    Mmin: Scalar minimum soil moisture (for error-catching) (in v/v).
+    alph: Scalar runoff parameter 1 (in inverse months).
+    m_th: Scalar runoff parameter 3 (unitless).
+    mu_th: Scalar runoff parameter 2 (unitless).
+    rootd: Scalar root/&#34;bucket&#34; depth (in mm).
+    M0: Initial value for previous month&#39;s soil moisture at t = 1 (in v/v).
+    substep: Use leaky bucket code with sub-monthly time-stepping? (TRUE/FALSE)
+    I_0: lower bound of integration window (months before January in NH)
+    I_f: upper bound of integration window (months after January in NH)
+    hydroclim: Switch; value is either &#34;P&#34; (default) or &#34;M&#34; depending on whether the second input climate variable
+        is precipitation, in which case soil moisture isestimated using the Leaky Bucket model of the CPC,
+        or soil moisture, in which case the inputs are used directly to compute the growth response.
+
+Returns:
+    res (dict): a dictionary with several lists, keys including:
+        trw: tree ring width
+        gT, gM, gE, M, potEv, sample.mean.width, sample.std.width
+
+Reference:
+    + The original VSLiteR code by Suz Tolwinski-Ward (https://github.com/suztolwinskiward/VSLiteR)
+    + Tolwinski-Ward, S.E., M.N. Evans, M.K. Hughes, K.J. Anchukaitis, An efficient forward model of the climate controls
+        on interannual variation in tree-ring width, Climate Dynamics, doi:10.1007/s00382-010-0945-5, (2011).
+    + Tolwinski-Ward, S.E., K.J. Anchukaitis, M.N. Evans, Bayesian parameter estimation and interpretation for an
+        intermediate model of tree-ring width , Climate of the Past, doi:10.5194/cpd-9-615-2013, (2013).
+    + Tolwinski-Ward, S.E., M.P. Tingley, M.N. Evans, M.K. Hughes, D.W. Nychka, Probabilistic reconstructions of localtemperature and
+        soil moisture from tree-ring data with potentially time-varying climatic response, Climate Dynamics, doi:10.1007/s00382-014-2139-z, (2014).
+<span class="ansi-red-fg">File:</span>      ~/Github/PyVSL/PyVSL/wrapper.py
+<span class="ansi-red-fg">Type:</span>      function
+
+</pre></div></div>
+</div>
 <section id="Load-test-data">
 <h2>Load test data<a class="headerlink" href="#Load-test-data" title="Permalink to this headline"></a></h2>
 <p>First of all, we load the test data (can be downloaded with this <a class="reference external" href="https://github.com/fzhu2e/PyVSL/raw/main/docsrc/tutorial/data/test_T_P.pkl">link</a>), which contains T and P at a grid point of the CCSM4 past1000 simulation. Note that the unit for T is degree C and that for P is accumulated monthly precipitation (mm/month).</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -386,7 +480,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -410,42 +504,19 @@ div.rendered_html tbody tr:hover {
 </section>
 <section id="Run-the-wrapper">
 <h2>Run the wrapper<a class="headerlink" href="#Run-the-wrapper" title="Permalink to this headline"></a></h2>
-<p>We first generate pseudo-TRW and then use it to test the Bayesian estimator of the parameters.</p>
+<p>Now we are ready to run the wrapper to generate simulated TRW.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">res</span> <span class="o">=</span> <span class="n">PyVSL</span><span class="o">.</span><span class="n">VSL_R</span><span class="p">(</span>
-        <span class="mi">850</span><span class="p">,</span> <span class="mi">1850</span><span class="p">,</span> <span class="mf">52.3</span><span class="p">,</span>                  <span class="c1"># the starting year and ending year of the input T &amp; P, along with the latitude</span>
-        <span class="n">T</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span>
-        <span class="n">T1</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">T2</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">M1</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">M2</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>  <span class="c1"># parameters of the thresholds</span>
-<span class="p">)</span>
-
-<span class="n">pseudoTRW</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;trw&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">pseudoTRW</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-[ 0.18525134  1.71342793  2.09788837 ... -1.01238709  0.08412175
- -0.98738847]
-</pre></div></div>
-</div>
-<p>Now we estimate the paramters.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="o">%%time</span>
 
-<span class="n">res_dict</span> <span class="o">=</span> <span class="n">PyVSL</span><span class="o">.</span><span class="n">est_params</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="mf">52.3</span><span class="p">,</span> <span class="n">pseudoTRW</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">res_dict</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">PyVSL</span><span class="o">.</span><span class="n">VSL_R</span><span class="p">(</span>
+        <span class="mi">850</span><span class="p">,</span> <span class="mi">1850</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span>                  <span class="c1"># the starting year and ending year of the input T &amp; P, along with the latitude</span>
+        <span class="n">T</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span>
+        <span class="n">T1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">T2</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">M1</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">M2</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>  <span class="c1"># parameters of the thresholds</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -454,47 +525,43 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Working on chain 1 out of 3...
-Working on chain 2 out of 3...
-Working on chain 3 out of 3...
-warning: implicit conversion from numeric to char
-warning: called from
-    estimate_vslite_params_v2_3 at line 456 column 9
-    _pyeval at line 57 column 30
-
-warning: implicit conversion from numeric to char
-warning: called from
-    estimate_vslite_params_v2_3 at line 457 column 9
-    _pyeval at line 57 column 30
-
-warning: implicit conversion from numeric to char
-warning: called from
-    estimate_vslite_params_v2_3 at line 458 column 9
-    _pyeval at line 57 column 30
-
-warning: implicit conversion from numeric to char
-warning: called from
-    estimate_vslite_params_v2_3 at line 459 column 9
-    _pyeval at line 57 column 30
-
-warning: implicit conversion from numeric to char
-warning: called from
-    estimate_vslite_params_v2_3 at line 461 column 13
-    _pyeval at line 57 column 30
-
-warning: implicit conversion from numeric to char
-warning: called from
-    estimate_vslite_params_v2_3 at line 466 column 9
-    _pyeval at line 57 column 30
-
-    Rhat for T1, T2, M1, M2, sigma2rw:
-   1.9312   1.3891   1.0009   0.9995   1.1530
-Gelman and Rubin metric suggests MCMC has not yet converged to within desired threshold;
-Parameter estimation code should be re-run using a greater number of MCMC iterations.
-(See &#39;nsamp&#39; advanced input option.)
-{&#39;T1&#39;: 3.018960817740966, &#39;T2&#39;: 14.992147475519113, &#39;M1&#39;: 0.032256467615351156, &#39;M2&#39;: 0.2310910498515877}
-CPU times: user 31.7 ms, sys: 11.2 ms, total: 42.9 ms
-Wall time: 1min 13s
+CPU times: user 172 ms, sys: 25 ms, total: 197 ms
+Wall time: 196 ms
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+dict_keys([&#39;trw&#39;, &#39;gT&#39;, &#39;gM&#39;, &#39;gE&#39;, &#39;M&#39;, &#39;potEv&#39;, &#39;sample.mean.width&#39;, &#39;sample.std.width&#39;, &#39;trw_org&#39;])
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;trw&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># this is the simulated TRW</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[ 0.03242287  1.62074875  2.00288833 ... -0.87266271  0.07929194
+ -1.20604461]
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
@@ -513,7 +580,8 @@ Wall time: 1min 13s
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="quickstart-wrapper-Matlab.html" class="btn btn-neutral float-left" title="Quickstart: the wrapper for VS-Lite in Matlab" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../tutorial.html" class="btn btn-neutral float-left" title="Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="quickstart-wrapper-Matlab.html" class="btn btn-neutral float-right" title="Quickstart: the wrapper for VS-Lite in Matlab" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

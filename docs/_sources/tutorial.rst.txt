@@ -7,5 +7,6 @@ Quickstart
 .. toctree::
     :maxdepth: 1
 
-    tutorial/quickstart-wrapper
+    tutorial/quickstart-wrapper-R
+    tutorial/quickstart-wrapper-Matlab
     tutorial/quickstart-params-estimator
