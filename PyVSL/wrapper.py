@@ -84,7 +84,7 @@ def VSL_R(syear, eyear, phi, T, P, T1=8, T2=23, M1=0.01, M2=0.05, Mmax=0.76, Mmi
 
 def VSL_M(syear, eyear, phi, T, P, T1=8, T2=23, M1=0.01, M2=0.05, Mmax=0.76, Mmin=0.01,
           alph=0.093, m_th=4.886, mu_th=5.8, rootd=1000, M0=0.2, substep=0, I_0=1, I_f=12,
-          hydroclim="P", Rlib_path=None):
+          hydroclim="P"):
 
     ''' VS-Lite tree-ring PSM
 
