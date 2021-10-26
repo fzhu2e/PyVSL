@@ -357,8 +357,8 @@ div.rendered_html tbody tr:hover {
 <h1>Quickstart: the wrapper for VS-Lite in Matlab<a class="headerlink" href="#Quickstart:-the-wrapper-for-VS-Lite-in-Matlab" title="Permalink to this headline"></a></h1>
 <p><strong>Expected time to run through: 5 mins</strong></p>
 <p>In this tutorial, we demonstrate how to run the R package of VS-Lite with PyVSL.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -371,18 +371,9 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-The autoreload extension is already loaded. To reload it, use:
-  %reload_ext autoreload
-</pre></div></div>
-</div>
 <p>In the below, we check the wrapper function first, and let’s pay attention to the units of the input T and P.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -473,7 +464,7 @@ Reference:
 <h2>Load test data<a class="headerlink" href="#Load-test-data" title="Permalink to this headline"></a></h2>
 <p>First of all, we load the test data (can be downloaded with this <a class="reference external" href="https://github.com/fzhu2e/PyVSL/raw/main/docsrc/tutorial/data/test_T_P.pkl">link</a>), which contains T and P at a grid point of the CCSM4 past1000 simulation. Note that the unit for T is degree C and that for P is accumulated monthly precipitation (mm/month).</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -485,7 +476,7 @@ Reference:
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -511,7 +502,7 @@ Reference:
 <h2>Run the wrapper<a class="headerlink" href="#Run-the-wrapper" title="Permalink to this headline"></a></h2>
 <p>Now we are ready to run the wrapper to generate simulated TRW.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -530,9 +521,8 @@ Reference:
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-/home/fzhu/Github/PyVSL/PyVSL
-CPU times: user 0 ns, sys: 11.9 ms, total: 11.9 ms
-Wall time: 1.19 s
+CPU times: user 6.25 ms, sys: 3.19 ms, total: 9.45 ms
+Wall time: 1.16 s
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">

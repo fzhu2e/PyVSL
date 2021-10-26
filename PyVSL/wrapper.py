@@ -133,14 +133,14 @@ def VSL_M(syear, eyear, phi, T, P, T1=8, T2=23, M1=0.01, M2=0.05, Mmax=0.76, Mmi
             soil moisture from tree-ring data with potentially time-varying climatic response, Climate Dynamics, doi:10.1007/s00382-014-2139-z, (2014).
     '''
     dirpath = os.path.dirname(__file__)
-    oct2py.Oct2Py(temp_dir=dirpath)
-    oct2py.octave.addpath(dirpath)
+    oc = oct2py.Oct2Py(temp_dir=dirpath)
+    oc.addpath(dirpath)
 
     nyr = eyear - syear + 1
     T_model = T.reshape((nyr, 12)).T
     P_model = P.reshape((nyr, 12)).T
 
-    res = oct2py.octave.feval('VSLite_v2_3',
+    res = oc.feval('VSLite_v2_3',
         syear, eyear, phi,  T1, T2, M1, M2, T_model, P_model, Mmax=Mmax, Mmin=Mmin,
         alph=alph, m_th=m_th, mu_th=mu_th, rootd=rootd, M0=M0, substep=substep,
         I_0=I_0, I_f=I_f, hydroclim=hydroclim,
@@ -172,8 +172,8 @@ def est_params(
         seed (int): random seed
     '''
     dirpath = os.path.dirname(__file__)
-    oct2py.Oct2Py(temp_dir=dirpath)
-    oct2py.octave.addpath(dirpath)
+    oc = oct2py.Oct2Py(temp_dir=dirpath)
+    oc.addpath(dirpath)
 
     if nyr is None:
         nyr = np.size(T) // 12
@@ -181,7 +181,8 @@ def est_params(
     T_model = T.reshape((nyr, 12)).T
     P_model = P.reshape((nyr, 12)).T
 
-    T1, T2, M1, M2 = oct2py.octave.feval(
+    # T1, T2, M1, M2 = oct2py.octave.feval(
+    T1, T2, M1, M2 = oc.feval(
         'estimate_vslite_params_v2_3',
         T_model, P_model, lat, TRW,
         'seed', seed, 'nsamp', nsamp, 'errormod', errormod,
