@@ -98,26 +98,26 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 32,
+   "execution_count": 4,
    "metadata": {},
    "outputs": [
     {
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "[ 0.18525134  1.71342793  2.09788837 ... -1.01238709  0.08412175\n",
-      " -0.98738847]\n"
+      "[ 0.18525126  1.71342774  2.0978884  ... -1.01238715  0.08412163\n",
+      " -0.98738839]\n"
      ]
     }
    ],
    "source": [
-    "res = PyVSL.VSL_R(\n",
+    "res = PyVSL.VSL_M(\n",
     "        850, 1850, 52.3,                  # the starting year and ending year of the input T & P, along with the latitude\n",
     "        T, P,\n",
     "        T1=3, T2=15, M1=0.05, M2=0.2,  # parameters of the thresholds\n",
     ")\n",
     "\n",
-    "pseudoTRW = res['trw'][0]\n",
+    "pseudoTRW = res['trw']\n",
     "print(pseudoTRW)"
    ]
   },
@@ -130,7 +130,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 33,
+   "execution_count": 5,
    "metadata": {},
    "outputs": [
     {
@@ -171,13 +171,13 @@
       "    _pyeval at line 57 column 30\n",
       "\n",
       "    Rhat for T1, T2, M1, M2, sigma2rw:\n",
-      "   1.9312   1.3891   1.0009   0.9995   1.1530\n",
+      "    4.4953   85.2531    0.9990    0.9991   29.1848\n",
       "Gelman and Rubin metric suggests MCMC has not yet converged to within desired threshold;\n",
       "Parameter estimation code should be re-run using a greater number of MCMC iterations.\n",
       "(See 'nsamp' advanced input option.)\n",
-      "{'T1': 3.018960817740966, 'T2': 14.992147475519113, 'M1': 0.032256467615351156, 'M2': 0.2310910498515877}\n",
-      "CPU times: user 31.7 ms, sys: 11.2 ms, total: 42.9 ms\n",
-      "Wall time: 1min 13s\n"
+      "{'T1': 2.9999204401190873, 'T2': 15.000326318028137, 'M1': 0.03217521381599234, 'M2': 0.2300052886329777}\n",
+      "CPU times: user 41.4 ms, sys: 21.8 ms, total: 63.2 ms\n",
+      "Wall time: 1min 16s\n"
      ]
     }
    ],

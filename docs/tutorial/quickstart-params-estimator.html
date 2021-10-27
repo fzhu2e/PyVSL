@@ -412,17 +412,17 @@ div.rendered_html tbody tr:hover {
 <h2>Run the wrapper<a class="headerlink" href="#Run-the-wrapper" title="Permalink to this headline"></a></h2>
 <p>We first generate pseudo-TRW and then use it to test the Bayesian estimator of the parameters.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">res</span> <span class="o">=</span> <span class="n">PyVSL</span><span class="o">.</span><span class="n">VSL_R</span><span class="p">(</span>
+<span></span><span class="n">res</span> <span class="o">=</span> <span class="n">PyVSL</span><span class="o">.</span><span class="n">VSL_M</span><span class="p">(</span>
         <span class="mi">850</span><span class="p">,</span> <span class="mi">1850</span><span class="p">,</span> <span class="mf">52.3</span><span class="p">,</span>                  <span class="c1"># the starting year and ending year of the input T &amp; P, along with the latitude</span>
         <span class="n">T</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span>
         <span class="n">T1</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">T2</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">M1</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">M2</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>  <span class="c1"># parameters of the thresholds</span>
 <span class="p">)</span>
 
-<span class="n">pseudoTRW</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;trw&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">pseudoTRW</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;trw&#39;</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">pseudoTRW</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -432,13 +432,13 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[ 0.18525134  1.71342793  2.09788837 ... -1.01238709  0.08412175
- -0.98738847]
+[ 0.18525126  1.71342774  2.0978884  ... -1.01238715  0.08412163
+ -0.98738839]
 </pre></div></div>
 </div>
 <p>Now we estimate the paramters.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -488,13 +488,13 @@ warning: called from
     _pyeval at line 57 column 30
 
     Rhat for T1, T2, M1, M2, sigma2rw:
-   1.9312   1.3891   1.0009   0.9995   1.1530
+    4.4953   85.2531    0.9990    0.9991   29.1848
 Gelman and Rubin metric suggests MCMC has not yet converged to within desired threshold;
 Parameter estimation code should be re-run using a greater number of MCMC iterations.
 (See &#39;nsamp&#39; advanced input option.)
-{&#39;T1&#39;: 3.018960817740966, &#39;T2&#39;: 14.992147475519113, &#39;M1&#39;: 0.032256467615351156, &#39;M2&#39;: 0.2310910498515877}
-CPU times: user 31.7 ms, sys: 11.2 ms, total: 42.9 ms
-Wall time: 1min 13s
+{&#39;T1&#39;: 2.9999204401190873, &#39;T2&#39;: 15.000326318028137, &#39;M1&#39;: 0.03217521381599234, &#39;M2&#39;: 0.2300052886329777}
+CPU times: user 41.4 ms, sys: 21.8 ms, total: 63.2 ms
+Wall time: 1min 16s
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">

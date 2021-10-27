@@ -414,7 +414,7 @@ VS-Lite tree-ring PSM
 
 Porting the VSLite Matlab code by Suz Tolwinski-Ward (https://github.com/suztolwinskiward/VSLite/blob/master/VSLite_v2_3.m)
 
-NOTE: Need to install Octave as an alternative to Matlab
+NOTE: Need to install Octave as a substitute of Matlab
 
 Args:
     syear (int): Start year of simulation.
@@ -502,13 +502,13 @@ Reference:
 <h2>Run the wrapper<a class="headerlink" href="#Run-the-wrapper" title="Permalink to this headline"></a></h2>
 <p>Now we are ready to run the wrapper to generate simulated TRW.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="o">%%time</span>
 
-<span class="n">TRW</span> <span class="o">=</span> <span class="n">PyVSL</span><span class="o">.</span><span class="n">VSL_M</span><span class="p">(</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">PyVSL</span><span class="o">.</span><span class="n">VSL_M</span><span class="p">(</span>
         <span class="mi">850</span><span class="p">,</span> <span class="mi">1850</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span>                  <span class="c1"># the starting year and ending year of the input T &amp; P, along with the latitude</span>
         <span class="n">T</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span>
         <span class="n">T1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">T2</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">M1</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">M2</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>  <span class="c1"># parameters of the thresholds</span>
@@ -521,16 +521,33 @@ Reference:
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 6.25 ms, sys: 3.19 ms, total: 9.45 ms
-Wall time: 1.16 s
+CPU times: user 7.23 ms, sys: 10.2 ms, total: 17.5 ms
+Wall time: 1.63 s
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="nb">print</span><span class="p">(</span><span class="n">TRW</span><span class="p">)</span>  <span class="c1"># this is the simulated TRW</span>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+dict_keys([&#39;trw&#39;, &#39;gT&#39;, &#39;gM&#39;, &#39;gE&#39;, &#39;M&#39;, &#39;potEv&#39;, &#39;width&#39;, &#39;width_mean&#39;, &#39;width_std&#39;])
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;trw&#39;</span><span class="p">])</span>  <span class="c1"># this is the simulated TRW</span>
 </pre></div>
 </div>
 </div>

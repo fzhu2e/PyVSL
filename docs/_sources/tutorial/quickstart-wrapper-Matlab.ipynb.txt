@@ -76,7 +76,7 @@
        "\n",
        "Porting the VSLite Matlab code by Suz Tolwinski-Ward (https://github.com/suztolwinskiward/VSLite/blob/master/VSLite_v2_3.m)\n",
        "\n",
-       "NOTE: Need to install Octave as an alternative to Matlab\n",
+       "NOTE: Need to install Octave as a substitute of Matlab\n",
        "\n",
        "Args:\n",
        "    syear (int): Start year of simulation.\n",
@@ -196,22 +196,22 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 7,
+   "execution_count": 5,
    "metadata": {},
    "outputs": [
     {
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "CPU times: user 6.25 ms, sys: 3.19 ms, total: 9.45 ms\n",
-      "Wall time: 1.16 s\n"
+      "CPU times: user 7.23 ms, sys: 10.2 ms, total: 17.5 ms\n",
+      "Wall time: 1.63 s\n"
      ]
     }
    ],
    "source": [
     "%%time\n",
     "\n",
-    "TRW = PyVSL.VSL_M(\n",
+    "res = PyVSL.VSL_M(\n",
     "        850, 1850, 45,                  # the starting year and ending year of the input T & P, along with the latitude\n",
     "        T, P,\n",
     "        T1=1, T2=15, M1=0.01, M2=0.05,  # parameters of the thresholds\n",
@@ -220,7 +220,24 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 9,
+   "execution_count": 7,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "dict_keys(['trw', 'gT', 'gM', 'gE', 'M', 'potEv', 'width', 'width_mean', 'width_std'])\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(res.keys())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
    "metadata": {},
    "outputs": [
     {
@@ -233,7 +250,7 @@
     }
    ],
    "source": [
-    "print(TRW)  # this is the simulated TRW"
+    "print(res['trw'])  # this is the simulated TRW"
    ]
   },
   {
