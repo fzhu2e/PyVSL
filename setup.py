@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-__version__ = '0.0.8'
+__version__ = '0.0.9'
 
 with open('README.rst', 'r') as fh:
     long_description = fh.read()
@@ -21,6 +21,7 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.9',
     ],
+    include_package_data=True,
     install_requires=[
         'oct2py',
     ],
