@@ -141,7 +141,7 @@ def VSL(syear, eyear, phi, T, P, T1=8, T2=23, M1=0.01, M2=0.05, Mmax=0.76, Mmin=
         for cyear in range(nyrs-1):
             width[cyear] = np.sum(Gr[startmo-1:12,cyear]) + np.sum(Gr[0:endmo,cyear+1])
         # use average of growth data across modeled years to estimate last year's growth due to the next year:
-        width[nyrs] = np.sum(Gr[startmo-1:12,nyrs])+ np.sum(np.mean(Gr[0:endmo,:], axis=1))
+        width[nyrs-1] = np.sum(Gr[startmo-1:12,nyrs-1])+ np.sum(np.mean(Gr[0:endmo,:], axis=1))
 
     trw = (width-np.mean(width))/np.std(width) # proxy series is standardized width.
     width_mean = np.mean(width)
