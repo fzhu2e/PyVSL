@@ -1,3 +1,8 @@
+'''
+Wrappers for VS-Lite in R and Matlab
+@author: Feng Zhu (fzhu@nuist.edu.cn)
+'''
+
 import os
 import numpy as np
 try:
@@ -142,10 +147,10 @@ def VSL_M(syear, eyear, phi, T, P, T1=8, T2=23, M1=0.01, M2=0.05, Mmax=0.76, Mmi
     T_model = T.reshape((nyr, 12)).T
     P_model = P.reshape((nyr, 12)).T
 
-    trw, gT, gM, gE, M, potEv, width, width_mean, width_std = oc.feval('VSLite_v2_3',
+    trw, gT, gM, gE, M, potEv, width, width_mean, width_std, Gr = oc.feval('VSLite_v2_3',
         syear, eyear, phi,  T1, T2, M1, M2, T_model, P_model, Mmax=Mmax, Mmin=Mmin,
         alph=alph, m_th=m_th, mu_th=mu_th, rootd=rootd, M0=M0, substep=substep,
-        I_0=I_0, I_f=I_f, hydroclim=hydroclim, nout=9
+        I_0=I_0, I_f=I_f, hydroclim=hydroclim, nout=10,
     )
 
     res_dict = {
@@ -155,14 +160,15 @@ def VSL_M(syear, eyear, phi, T, P, T1=8, T2=23, M1=0.01, M2=0.05, Mmax=0.76, Mmi
         'gE': gE,
         'M': M,
         'potEv': potEv,
-        'width': width,
-        'width_mean': width_mean,
-        'width_std': width_std,
+        'width': width[0][:,0],
+        'width_mean': width_mean[0],
+        'width_std': width_std[0],
+        'Gr': Gr[0],
     }
 
     return res_dict
 
-def leakybucket_monthly(syear, eyear, phi, T, P, Mmax=0.76, Mmin=0.01, alph=0.093, m_th=4.886, mu_th=5.8, rootd=1000, M0=0.2):
+def leakybucket_monthly_M(syear, eyear, phi, T, P, Mmax=0.76, Mmin=0.01, alph=0.093, m_th=4.886, mu_th=5.8, rootd=1000, M0=0.2):
     ''' Leaky bucket model: simulate soil moisture with coarse monthly time step, outputs simulated soil moisture and potential evapotranspiration.
 
     Args:

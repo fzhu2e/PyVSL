@@ -203,8 +203,8 @@
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "CPU times: user 7.23 ms, sys: 10.2 ms, total: 17.5 ms\n",
-      "Wall time: 1.63 s\n"
+      "CPU times: user 7.14 ms, sys: 11.4 ms, total: 18.6 ms\n",
+      "Wall time: 1.64 s\n"
      ]
     }
    ],
@@ -220,14 +220,14 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 7,
+   "execution_count": 6,
    "metadata": {},
    "outputs": [
     {
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "dict_keys(['trw', 'gT', 'gM', 'gE', 'M', 'potEv', 'width', 'width_mean', 'width_std'])\n"
+      "dict_keys(['trw', 'gT', 'gM', 'gE', 'M', 'potEv', 'width', 'width_mean', 'width_std', 'Gr'])\n"
      ]
     }
    ],
@@ -237,7 +237,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 6,
+   "execution_count": 7,
    "metadata": {},
    "outputs": [
     {

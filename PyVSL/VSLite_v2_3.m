@@ -150,6 +150,7 @@ gT = NaN(12,nyrs);
 gM = NaN(12,nyrs);
 M = NaN(12,nyrs);
 potEv = NaN(12,nyrs);
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Load in or estimate soil moisture:
 if strcmp(hydroclim,'M')
@@ -247,6 +248,7 @@ if nargout >=1
     varargout{6} = {width};
     varargout{7} = {mean(width)};
     varargout{8} = {std(width)};
+    varargout{9} = {Gr};
 end
 %
 end
