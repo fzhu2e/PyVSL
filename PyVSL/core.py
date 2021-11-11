@@ -4,7 +4,7 @@ VS-Lite in pure Python
 '''
 import numpy as np
 
-def VSL(syear, eyear, phi, T, P, T1=8, T2=23, M1=0.01, M2=0.05, Mmax=0.76, Mmin=0.01,
+def VSL(syear, eyear, phi, T, P, T1=8, T2=23, M1=0.01, M2=0.05, Mmax=0.76, Mmin=0.01, sensitivity='TM',
         alph=0.093, m_th=4.886, mu_th=5.8, rootd=1000, M0=0.2, substep=0, I_0=1, I_f=12, hydroclim='P'):
     '''
     Translated from VSLite_v2_3.m - Simulate tree ring width index given monthly climate inputs.
@@ -115,8 +115,13 @@ def VSL(syear, eyear, phi, T, P, T1=8, T2=23, M1=0.01, M2=0.05, Mmax=0.76, Mmin=
     gM[M>M2] = 1
 
     # Compute overall growth rate:
-    for cyear in range(nyrs):
-        Gr[:,cyear] = gE * np.amin(np.array([gT[:,cyear], gM[:,cyear]]), axis=0)
+    if sensitivity == 'T':
+        Gr = gE * gT
+    elif sensitivity == 'M':
+        Gr = gE * gM
+    else:
+        for cyear in range(nyrs):
+            Gr[:,cyear] = gE * np.amin(np.array([gT[:,cyear], gM[:,cyear]]), axis=0)
 
     width = np.ones(nyrs)
     width[:] = np.nan
