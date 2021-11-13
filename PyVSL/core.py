@@ -120,7 +120,7 @@ def VSL(syear, eyear, phi, T, P, T1=8, T2=23, M1=0.01, M2=0.05, Mmax=0.76, Mmin=
     elif sensitivity == 'M':
         Gr = np.transpose(gM.T*gE)
     else:
-        Gr = np.transpose(np.amin(np.array([gT, gM]]), axis=0).T * gE)
+        Gr = np.transpose(np.amin(np.array([gT, gM]), axis=0).T * gE)
 
     width = np.ones(nyrs)
     width[:] = np.nan
