@@ -116,14 +116,11 @@ def VSL(syear, eyear, phi, T, P, T1=8, T2=23, M1=0.01, M2=0.05, Mmax=0.76, Mmin=
 
     # Compute overall growth rate:
     if sensitivity == 'T':
-        for cyear in range(nyrs):
-            Gr[:, cyear] = gE * gT[:, cyear]
+        Gr = np.transpose(gT.T*gE)
     elif sensitivity == 'M':
-        for cyear in range(nyrs):
-            Gr[:, cyear] = gE * gM[:, cyear]
+        Gr = np.transpose(gM.T*gE)
     else:
-        for cyear in range(nyrs):
-            Gr[:,cyear] = gE * np.amin(np.array([gT[:,cyear], gM[:,cyear]]), axis=0)
+        Gr = np.transpose(np.amin(np.array([gT, gM]]), axis=0).T * gE)
 
     width = np.ones(nyrs)
     width[:] = np.nan
