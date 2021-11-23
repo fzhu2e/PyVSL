@@ -256,23 +256,23 @@ def VSL_cuda(syear, eyear, phi, T, P, T1=8, T2=23, M1=0.01, M2=0.05, Mmax=0.76, 
 
     # output vars
     Gr = torch.zeros([12, nyrs])
-    gT = torch.zeros([12, nyrs]).cuda()
-    gM = torch.zeros([12, nyrs]).cuda()
+    gT = torch.zeros([12, nyrs])
+    gM = torch.zeros([12, nyrs])
     M = torch.zeros([12, nyrs])
     potEv = torch.zeros([12, nyrs])
 
     if hydroclim == 'M':
-        M = P.cuda()
+        M = P
     elif substep == 1:
         M = leakybucket_submonthly(syear,eyear,phi,T,P,Mmax,Mmin,alph,m_th,mu_th,rootd,M0)['M']
-        M = M.cuda()
+        M = M
     elif substep == 0:
         M = leakybucket_monthly_cuda(syear,eyear,phi,T,P,Mmax,Mmin,alph,m_th,mu_th,rootd,M0)['M']
-        M = M.cuda()
+        M = M
     else:
         raise ValueError('substep must either be set to 1 or 0')
 
-    gE = torch.from_numpy(Compute_gE(phi)).cuda()
+    gE = torch.from_numpy(Compute_gE(phi))
     gT = (T-T1)/(T2-T1)
     gT[T<T1] = 0
     gT[T>T2] = 1
@@ -500,6 +500,8 @@ def leakybucket_monthly(syear,eyear,phi,T,P,Mmax=0.76, Mmin=0.01, alph=0.093, m_
     # output vars
     M = np.ndarray((12, nyrs))
     potEv = np.ndarray((12, nyrs))
+
+    # import ipdb;ipdb.set_trace()
 
     # Compute normalized daylength (neglecting small difference in calculation for leap-years)
     latr = phi*np.pi/180;  # change to radians
