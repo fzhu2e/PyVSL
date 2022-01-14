@@ -14,7 +14,6 @@ try:
 except ImportError:
     pass
 
-import oct2py
 
 
 def VSL_R(syear, eyear, phi, T, P, T1=8, T2=23, M1=0.01, M2=0.05, Mmax=0.76, Mmin=0.01,
@@ -139,6 +138,7 @@ def VSL_M(syear, eyear, phi, T, P, T1=8, T2=23, M1=0.01, M2=0.05, Mmax=0.76, Mmi
         + Tolwinski-Ward, S.E., M.P. Tingley, M.N. Evans, M.K. Hughes, D.W. Nychka, Probabilistic reconstructions of localtemperature and
             soil moisture from tree-ring data with potentially time-varying climatic response, Climate Dynamics, doi:10.1007/s00382-014-2139-z, (2014).
     '''
+    import oct2py
     dirpath = os.path.dirname(__file__)
     oc = oct2py.Oct2Py(temp_dir=dirpath)
     oc.addpath(dirpath)
@@ -191,7 +191,7 @@ def leakybucket_monthly_M(syear, eyear, phi, T, P, Mmax=0.76, Mmin=0.01, alph=0.
         M (array): soil moisture computed via the CPC Leaky Bucket model (in v/v, 12 x Nyrs)
         potEv (array): potential evapotranspiration computed via Thornthwaite's 1947 scheme (in mm)
     '''
-
+    import oct2py
     dirpath = os.path.dirname(__file__)
     oc = oct2py.Oct2Py(temp_dir=dirpath)
     oc.addpath(dirpath)
@@ -215,7 +215,7 @@ def leakybucket_monthly_M(syear, eyear, phi, T, P, Mmax=0.76, Mmin=0.01, alph=0.
 def est_params(
     T, P, lat, TRW, nyr=None,
     nsamp=1000, errormod=0, gparpriors='fourbet',
-    pt_ests='med', seed=0,
+    pt_ests='med', seed=0, hydroclim='P',
     beta_params=np.matrix([
         [9, 5, 0, 9],
         [3.5, 3.5, 10, 24],
@@ -234,6 +234,8 @@ def est_params(
         beta_params (matrix): the beta distribution parameters for T1, T2, M1, M2
         seed (int): random seed
     '''
+
+    import oct2py
     dirpath = os.path.dirname(__file__)
     oc = oct2py.Oct2Py(temp_dir=dirpath)
     oc.addpath(dirpath)
@@ -250,7 +252,8 @@ def est_params(
         T_model, P_model, lat, TRW,
         'seed', seed, 'nsamp', nsamp, 'errormod', errormod,
         'gparpriors', gparpriors, 'fourbetparams', beta_params,
-        'pt_ests', pt_ests, nargout=4, nout=4,
+        'pt_ests', pt_ests, 'hydroclim', hydroclim,
+        nargout=4, nout=4,
     )
 
     res_dict = {
