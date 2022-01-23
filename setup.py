@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-__version__ = '0.1.7'
+__version__ = '0.1.8'
 
 with open('README.rst', 'r') as fh:
     long_description = fh.read()
@@ -19,6 +19,7 @@ setup(
     keywords='Proxy System Modeling, Tree-ring Width',
     classifiers=[
         'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
     ],
     include_package_data=True,

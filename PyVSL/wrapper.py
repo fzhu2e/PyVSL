@@ -14,10 +14,6 @@ try:
 except ImportError:
     pass
 
-try:
-    import oct2py
-except ImportError:
-    pass
 
 
 
@@ -143,6 +139,7 @@ def VSL_M(syear, eyear, phi, T, P, T1=8, T2=23, M1=0.01, M2=0.05, Mmax=0.76, Mmi
         + Tolwinski-Ward, S.E., M.P. Tingley, M.N. Evans, M.K. Hughes, D.W. Nychka, Probabilistic reconstructions of localtemperature and
             soil moisture from tree-ring data with potentially time-varying climatic response, Climate Dynamics, doi:10.1007/s00382-014-2139-z, (2014).
     '''
+    import oct2py
     dirpath = os.path.dirname(__file__)
     oc = oct2py.Oct2Py(temp_dir=dirpath)
     oc.addpath(dirpath)
@@ -197,6 +194,7 @@ def leakybucket_monthly_M(syear, eyear, phi, T, P, Mmax=0.76, Mmin=0.01, alph=0.
         M (array): soil moisture computed via the CPC Leaky Bucket model (in v/v, 12 x Nyrs)
         potEv (array): potential evapotranspiration computed via Thornthwaite's 1947 scheme (in mm)
     '''
+    import oct2py
     dirpath = os.path.dirname(__file__)
     oc = oct2py.Oct2Py(temp_dir=dirpath)
     oc.addpath(dirpath)
@@ -240,7 +238,7 @@ def est_params(
         beta_params (matrix): the beta distribution parameters for T1, T2, M1, M2
         seed (int): random seed
     '''
-
+    import oct2py
     dirpath = os.path.dirname(__file__)
     oc = oct2py.Oct2Py(temp_dir=dirpath)
     oc.addpath(dirpath)
