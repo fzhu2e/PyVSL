@@ -220,6 +220,7 @@ def est_params(
     T, P, lat, TRW, nyr=None,
     nsamp=1000, errormod=0, gparpriors='fourbet',
     pt_ests='med', seed=0, hydroclim='P',
+    intwindow=[0, 12],
     beta_params=np.matrix([
         [9, 5, 0, 9],
         [3.5, 3.5, 10, 24],
@@ -232,6 +233,7 @@ def est_params(
         P (1-D array): monthly accumulated precipitation [mm]
         lat (float): latitude of the site
         pt_ests (str): 'med' or 'mle'
+        intwindow (list): the integration window for annual growth
         nsamp (int): the number of MCMC iterations
         errmod (int): 0: white noise, 1: AR(1) noise
         gparpriors (str): 'fourbet': beta distribution, 'uniform': uniform distribution
@@ -249,13 +251,13 @@ def est_params(
     T_model = T.reshape((nyr, 12)).T
     P_model = P.reshape((nyr, 12)).T
 
-    # T1, T2, M1, M2 = oct2py.octave.feval(
     T1, T2, M1, M2 = oc.feval(
         'estimate_vslite_params_v2_3',
         T_model, P_model, lat, TRW,
         'seed', seed, 'nsamp', nsamp, 'errormod', errormod,
         'gparpriors', gparpriors, 'fourbetparams', beta_params,
         'pt_ests', pt_ests, 'hydroclim', hydroclim,
+        'intwindow', intwindow,
         nargout=4, nout=4,
     )
 
