@@ -220,7 +220,7 @@ def est_params(
     T, P, lat, TRW, nyr=None,
     nsamp=1000, errormod=0, gparpriors='fourbet',
     pt_ests='med', seed=0, hydroclim='P',
-    intwindow=[0, 12],
+    intwindow=[1, 12],
     beta_params=np.matrix([
         [9, 5, 0, 9],
         [3.5, 3.5, 10, 24],

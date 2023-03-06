@@ -209,7 +209,7 @@ end % end year cycle
 width = NaN*ones(length(syear:eyear),1);
 if phi>0 % if site is in the Northern Hemisphere:
     if I_0<0; % if we include part of the previous year in each year's modeled growth:
-        startmo = 13+I_0;
+        startmo = 12+I_0;
         endmo = I_f;
         % use average of growth data across modeled years to estimate first year's growth due
         % to previous year:
@@ -218,7 +218,7 @@ if phi>0 % if site is in the Northern Hemisphere:
             width(cyear) = sum(Gr(startmo:12,cyear-1)) + sum(Gr(1:endmo,cyear));
         end
     else % no inclusion of last year's growth conditions in estimates of this year's growth:
-        startmo = I_0+1;
+        startmo = I_0;
         endmo = I_f;
         for cyear = 1:length(syear:eyear)
             width(cyear) = sum(Gr(startmo:endmo,cyear));
@@ -226,7 +226,7 @@ if phi>0 % if site is in the Northern Hemisphere:
     end
 elseif phi<0 % if site is in the Southern Hemisphere:
     % (Note: in the Southern Hemisphere, ring widths are dated to the year in which growth began!)
-    startmo = 7+I_0; % (eg. I_0 = -4 in SH corresponds to starting integration in March of cyear)
+    startmo = 6+I_0; % (eg. I_0 = -4 in SH corresponds to starting integration in March of cyear)
     endmo = I_f-6; % (eg. I_f = 12 in SH corresponds to ending integraion in June of next year)
     for cyear = 1:length(syear:eyear)-1
         width(cyear) = sum(Gr(startmo:12,cyear)) + sum(Gr(1:endmo,cyear+1));

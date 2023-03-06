@@ -126,7 +126,7 @@ def VSL(syear, eyear, phi, T, P, T1=8, T2=23, M1=0.01, M2=0.05, Mmax=0.76, Mmin=
     width[:] = np.nan
     if phi>0: # if site is in the Northern Hemisphere:
         if I_0<0: # if we include part of the previous year in each year's modeled growth:
-            startmo = 13+I_0
+            startmo = 12+I_0
             endmo = I_f
             # use average of growth data across modeled years to estimate first year's growth due
             # to previous year:
@@ -134,13 +134,13 @@ def VSL(syear, eyear, phi, T, P, T1=8, T2=23, M1=0.01, M2=0.05, Mmax=0.76, Mmin=
             for cyear in range(1, nyrs):
                 width[cyear] = np.sum(Gr[startmo-1:12,cyear-1]) + np.sum(Gr[0:endmo,cyear])
         else: # no inclusion of last year's growth conditions in estimates of this year's growth:
-            startmo = I_0+1
+            startmo = I_0
             endmo = I_f
             for cyear in range(nyrs):
                 width[cyear] = np.sum(Gr[startmo-1:endmo,cyear])
     elif phi<0: # if site is in the Southern Hemisphere:
         # (Note: in the Southern Hemisphere, ring widths are dated to the year in which growth began!)
-        startmo = 7+I_0 # (eg. I_0 = -4 in SH corresponds to starting integration in March of cyear)
+        startmo = 6+I_0 # (eg. I_0 = -4 in SH corresponds to starting integration in March of cyear)
         endmo = I_f-6 # (eg. I_f = 12 in SH corresponds to ending integraion in June of next year)
         for cyear in range(nyrs-1):
             width[cyear] = np.sum(Gr[startmo-1:12,cyear]) + np.sum(Gr[0:endmo,cyear+1])

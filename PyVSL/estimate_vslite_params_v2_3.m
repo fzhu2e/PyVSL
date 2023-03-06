@@ -58,7 +58,7 @@ function [T1,T2,M1,M2,varargout] = estimate_vslite_params_v2_3(T,P,phi,RW,vararg
 %                     depending on whether leaky bucket model without/with
 %                     substepping is preferred.  Default is [0].
 %     'intwindow'     VS-Lite integration window, specified as vector [I_0 I_f]
-%                     Default is [0 12].
+%                     Default is [1 12].
 %     'nsamp'         200<=integer<=10,000 fixing number of MCMC iterations.
 %                     Default is [1000].
 %     'nbi'           Number of burn-in samples. Default is [200].
@@ -151,7 +151,7 @@ if nargin > 4 % read in advanced options if user-specified:
     pt_ests = 'mle';
     hydroclim = 'P';
     substep = 0;
-    intwindow = [0 12];
+    intwindow = [1 12];
     nsamp = 1000;
     nbi = 200;
     nchain = 3;
@@ -233,7 +233,7 @@ else % otherwise, read in defaults:
     pt_ests = 'mle';
     hydroclim = 'P';
     substep = 0;
-    intwindow = [0 12];
+    intwindow = [1 12];
     nsamp = 1000;
     nbi = 200;
     nchain = 3;
@@ -906,7 +906,7 @@ if 1 % Sample from prior as proposal distribution!
     %
     %%%%%%%%%% account for variable integration window:
     if I_0<0; % if we include part of the previous year in each year's modeled growth:
-        startmo = 13+I_0;
+        startmo = 12+I_0;
         endmo = I_f;
         prevseas = [mean(gprop(startmo:12,:),2) gprop(startmo:12,1:end-1)];
         gprop = gprop(1:endmo,:);
@@ -915,7 +915,7 @@ if 1 % Sample from prior as proposal distribution!
         gcurr = gcurr(1:endmo,:);
         gcurr = [prevseas; gcurr];
     else % no inclusion of last year's growth conditions in estimates of this year's growth:
-        startmo = I_0+1;
+        startmo = I_0;
         endmo = I_f;
         gprop = gprop(startmo:endmo,:);
         gcurr = gcurr(startmo:endmo,:);
@@ -975,7 +975,7 @@ if 1 % Sample from prior as proposal distribution!
     %
     %%%%%%%%%% account for variable integration window:
     if I_0<0; % if we include part of the previous year in each year's modeled growth:
-        startmo = 13+I_0;
+        startmo = 12+I_0;
         endmo = I_f;
         prevseas = [mean(gprop(startmo:12,:),2) gprop(startmo:12,1:end-1)];
         gprop = gprop(1:endmo,:);
@@ -984,7 +984,7 @@ if 1 % Sample from prior as proposal distribution!
         gcurr = gcurr(1:endmo,:);
         gcurr = [prevseas; gcurr];
     else % no inclusion of last year's growth conditions in estimates of this year's growth:
-        startmo = I_0+1;
+        startmo = I_0;
         endmo = I_f;
         gprop = gprop(startmo:endmo,:);
         gcurr = gcurr(startmo:endmo,:);
@@ -1047,7 +1047,7 @@ if 1 % Sample from prior as proposal distribution!
     %
     %%%%%%%%%% account for variable integration window:
     if I_0<0; % if we include part of the previous year in each year's modeled growth:
-        startmo = 13+I_0;
+        startmo = 12+I_0;
         endmo = I_f;
         prevseas = [mean(gprop(startmo:12,:),2) gprop(startmo:12,1:end-1)];
         gprop = gprop(1:endmo,:);
@@ -1056,7 +1056,7 @@ if 1 % Sample from prior as proposal distribution!
         gcurr = gcurr(1:endmo,:);
         gcurr = [prevseas; gcurr];
     else % no inclusion of last year's growth conditions in estimates of this year's growth:
-        startmo = I_0+1;
+        startmo = I_0;
         endmo = I_f;
         gprop = gprop(startmo:endmo,:);
         gcurr = gcurr(startmo:endmo,:);
@@ -1115,7 +1115,7 @@ if 1 % Sample from prior as proposal distribution!
     %
     %%%%%%%%%% account for variable integration window:
     if I_0<0; % if we include part of the previous year in each year's modeled growth:
-        startmo = 13+I_0;
+        startmo = 12+I_0;
         endmo = I_f;
         prevseas = [mean(gprop(startmo:12,:),2) gprop(startmo:12,1:end-1)];
         gprop = gprop(1:endmo,:);
@@ -1124,7 +1124,7 @@ if 1 % Sample from prior as proposal distribution!
         gcurr = gcurr(1:endmo,:);
         gcurr = [prevseas; gcurr];
     else % no inclusion of last year's growth conditions in estimates of this year's growth:
-        startmo = I_0+1;
+        startmo = I_0;
         endmo = I_f;
         gprop = gprop(startmo:endmo,:);
         gcurr = gcurr(startmo:endmo,:);
@@ -1188,7 +1188,7 @@ if 1 % Sample from prior as proposal distribution!
     %
     %%%%%%%%%% account for variable integration window:
     if I_0<0; % if we include part of the previous year in each year's modeled growth:
-        startmo = 13+I_0;
+        startmo = 12+I_0;
         endmo = I_f;
         prevseas = [mean(gprop(startmo:12,:),2) gprop(startmo:12,1:end-1)];
         gprop = gprop(1:endmo,:);
@@ -1197,7 +1197,7 @@ if 1 % Sample from prior as proposal distribution!
         gcurr = gcurr(1:endmo,:);
         gcurr = [prevseas; gcurr];
     else % no inclusion of last year's growth conditions in estimates of this year's growth:
-        startmo = I_0+1;
+        startmo = I_0;
         endmo = I_f;
         gprop = gprop(startmo:endmo,:);
         gcurr = gcurr(startmo:endmo,:);
@@ -1256,7 +1256,7 @@ if 1 % Sample from prior as proposal distribution!
     %
     %%%%%%%%%% account for variable integration window:
     if I_0<0; % if we include part of the previous year in each year's modeled growth:
-        startmo = 13+I_0;
+        startmo = 12+I_0;
         endmo = I_f;
         prevseas = [mean(gprop(startmo:12,:),2) gprop(startmo:12,1:end-1)];
         gprop = gprop(1:endmo,:);
@@ -1265,7 +1265,7 @@ if 1 % Sample from prior as proposal distribution!
         gcurr = gcurr(1:endmo,:);
         gcurr = [prevseas; gcurr];
     else % no inclusion of last year's growth conditions in estimates of this year's growth:
-        startmo = I_0+1;
+        startmo = I_0;
         endmo = I_f;
         gprop = gprop(startmo:endmo,:);
         gcurr = gcurr(startmo:endmo,:);
@@ -1329,7 +1329,7 @@ if 1 % Sample from prior as proposal distribution!
     %
     %%%%%%%%%% account for variable integration window:
     if I_0<0; % if we include part of the previous year in each year's modeled growth:
-        startmo = 13+I_0;
+        startmo = 12+I_0;
         endmo = I_f;
         prevseas = [mean(gprop(startmo:12,:),2) gprop(startmo:12,1:end-1)];
         gprop = gprop(1:endmo,:);
@@ -1338,7 +1338,7 @@ if 1 % Sample from prior as proposal distribution!
         gcurr = gcurr(1:endmo,:);
         gcurr = [prevseas; gcurr];
     else % no inclusion of last year's growth conditions in estimates of this year's growth:
-        startmo = I_0+1;
+        startmo = I_0;
         endmo = I_f;
         gprop = gprop(startmo:endmo,:);
         gcurr = gcurr(startmo:endmo,:);
@@ -1397,7 +1397,7 @@ if 1 % Sample from prior as proposal distribution!
     %
     %%%%%%%%%% account for variable integration window:
     if I_0<0; % if we include part of the previous year in each year's modeled growth:
-        startmo = 13+I_0;
+        startmo = 12+I_0;
         endmo = I_f;
         prevseas = [mean(gprop(startmo:12,:),2) gprop(startmo:12,1:end-1)];
         gprop = gprop(1:endmo,:);
@@ -1406,7 +1406,7 @@ if 1 % Sample from prior as proposal distribution!
         gcurr = gcurr(1:endmo,:);
         gcurr = [prevseas; gcurr];
     else % no inclusion of last year's growth conditions in estimates of this year's growth:
-        startmo = I_0+1;
+        startmo = I_0;
         endmo = I_f;
         gprop = gprop(startmo:endmo,:);
         gcurr = gcurr(startmo:endmo,:);
@@ -1461,13 +1461,13 @@ function [sigma2rw,logLdata] = errormodel0_aux(sigma2rwcurr,RW,Gterms,intwindow,
 %%%%%%%%%% account for variable integration window:
 I_0 = intwindow(1); I_f = intwindow(2);
 if I_0<0; % if we include part of the previous year in each year's modeled growth:
-    startmo = 13+I_0;
+    startmo = 12+I_0;
     endmo = I_f;
     prevseas = [mean(Gterms(startmo:12,:),2) Gterms(startmo:12,1:end-1)];
     Gterms = Gterms(1:endmo,:);
     Gterms = [prevseas; Gterms];
 else % no inclusion of last year's growth conditions in estimates of this year's growth:
-    startmo = I_0+1;
+    startmo = I_0;
     endmo = I_f;
     Gterms = Gterms(startmo:endmo,:);
 end
@@ -1507,13 +1507,13 @@ function [pars,logLdata] = errormodel1_aux(currpars,RW,Gterms,intwindow,cyrs)
 %%%%%%%%%% account for variable integration window:
 I_0 = intwindow(1); I_f = intwindow(2);
 if I_0<0; % if we include part of the previous year in each year's modeled growth:
-    startmo = 13+I_0;
+    startmo = 12+I_0;
     endmo = I_f;
     prevseas = [mean(Gterms(startmo:12,:),2) Gterms(startmo:12,1:end-1)];
     Gterms = Gterms(1:endmo,:);
     Gterms = [prevseas; Gterms];
 else % no inclusion of last year's growth conditions in estimates of this year's growth:
-    startmo = I_0+1;
+    startmo = I_0;
     endmo = I_f;
     Gterms = Gterms(startmo:endmo,:);
 end
