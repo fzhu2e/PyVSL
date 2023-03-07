@@ -251,14 +251,14 @@ def est_params(
     T_model = T.reshape((nyr, 12)).T
     P_model = P.reshape((nyr, 12)).T
 
-    T1, T2, M1, M2 = oc.feval(
+    T1, T2, M1, M2, _, _, _, _, Rhats, convwarning = oc.feval(
         'estimate_vslite_params_v2_3',
         T_model, P_model, lat, TRW,
         'seed', seed, 'nsamp', nsamp, 'errormod', errormod,
         'gparpriors', gparpriors, 'fourbetparams', beta_params,
         'pt_ests', pt_ests, 'hydroclim', hydroclim,
         'intwindow', intwindow,
-        nargout=4, nout=4,
+        nargout=10, nout=10,
     )
 
     res_dict = {
@@ -266,6 +266,8 @@ def est_params(
         'T2': T2,
         'M1': M1,
         'M2': M2,
+        'Rhats': Rhats,
+        'convwarning': convwarning,
     }
 
     oc.exit()
