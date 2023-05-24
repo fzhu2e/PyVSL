@@ -1,3 +1,6 @@
+.. image:: https://zenodo.org/badge/DOI/10.5281/zenodo.7967102.svg
+   :target: https://doi.org/10.5281/zenodo.7967102
+
 **********
 PyVSL
 **********
@@ -20,5 +23,9 @@ References
 
 + Tolwinski-Ward, S. E., Anchukaitis, K. J. & Evans, M. N. Bayesian parameter estimation and interpretation for an intermediate model of tree-ring width. Climate of the Past 9, 1481–1493 (2013).
 + Tolwinski-Ward, S. E., Evans, M. N., Hughes, M. K. & Anchukaitis, K. J. An efficient forward model of the climate controls on interannual variation in tree-ring width. Clim Dyn 36, 2419–2439 (2011).
+
+How to cite this repo
+=====================
+This repo can be cited with DOI: `10.5281/zenodo.7967102 <https://doi.org/10.5281/zenodo.7967102>`_
 
 
