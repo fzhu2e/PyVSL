@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-__version__ = '0.4.0'
+__version__ = '2024.3.16'
 
 with open('README.rst', 'r') as fh:
     long_description = fh.read()
@@ -20,6 +20,7 @@ setup(
     classifiers=[
         'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
     ],
     include_package_data=True,
     install_requires=[

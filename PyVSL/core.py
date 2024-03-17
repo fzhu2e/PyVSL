@@ -1,6 +1,6 @@
 '''
 VS-Lite in pure Python
-@author: Feng Zhu (fzhu@nuist.edu.cn)
+@author: Feng Zhu (fengzhu@ucar.edu)
 '''
 import numpy as np
 

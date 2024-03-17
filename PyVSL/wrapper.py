@@ -1,6 +1,6 @@
 '''
 Wrappers for VS-Lite in R and Matlab
-@author: Feng Zhu (fzhu@nuist.edu.cn)
+@author: Feng Zhu (fengzhu@ucar.edu)
 '''
 
 import os
